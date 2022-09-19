@@ -5,7 +5,7 @@ import { TransactionsContext } from '../../TransactionsContext';
 
 
 export default function TransactionsTable() {
-  const transactions = useContext(TransactionsContext);
+  const { transactions } = useContext(TransactionsContext);
 
   return (
    <Container>
@@ -21,7 +21,7 @@ export default function TransactionsTable() {
 
         <tbody>
             {
-                (transactions && transactions.length)  && transactions.map((transaction) => (
+                transactions.map((transaction) => (
                     <tr key={transaction.id}>
                         <td>
                            {transaction.title}
@@ -36,7 +36,7 @@ export default function TransactionsTable() {
                            {transaction.category}
                         </td>
                         <td>
-                        {new Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createAt))}
+                        {new Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createdAt))}
                         </td>
                     </tr>
                 ))
